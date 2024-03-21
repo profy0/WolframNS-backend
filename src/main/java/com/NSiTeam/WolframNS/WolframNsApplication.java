@@ -8,16 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @SpringBootApplication
-@RestController
 public class WolframNsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WolframNsApplication.class, args);
-	}
-
-	@GetMapping
-	public List<String> hello() {
-		return List.of("Hello", "World!");
 	}
 
 }
