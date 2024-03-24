@@ -1,5 +1,6 @@
 package com.NSiTeam.WolframNS.config;
 
+import com.NSiTeam.WolframNS.domain.Entities.Role;
 import jakarta.servlet.Filter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -27,8 +28,8 @@ public class SecurityConfiguration {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/v1/auth/**")
-                        .permitAll()
+                        .requestMatchers("/api/v1/auth/**").permitAll()
+                        .requestMatchers("/hello").hasRole(Role.ADMIN.name())
                         .anyRequest()
                         .authenticated()
                 )
