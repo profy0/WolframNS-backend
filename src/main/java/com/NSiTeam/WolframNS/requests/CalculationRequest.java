@@ -1,4 +1,4 @@
-package com.NSiTeam.WolframNS.domain.dto;
+package com.NSiTeam.WolframNS.requests;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,11 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserDto {
+public class CalculationRequest {
 
-    private Long id;
-    private String username;
-    private String password;
-    private String email;
+    private String toCalc;
 
 }
