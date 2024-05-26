@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CalculationRequest {
-    private String toCalc;
+public class ConversionRequest {
+    private String number;
+    private int fromBase;
+    private int toBase;
 }

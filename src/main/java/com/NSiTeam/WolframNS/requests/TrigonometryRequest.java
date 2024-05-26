@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CalculationRequest {
-    private String toCalc;
+public class TrigonometryRequest {
+    private Double angle;
+    private Integer terms;
 }

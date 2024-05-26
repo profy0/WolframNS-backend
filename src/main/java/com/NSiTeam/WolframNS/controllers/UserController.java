@@ -8,6 +8,9 @@ import lombok.AllArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
@@ -27,12 +30,36 @@ public class UserController {
     private UserService userService;
 
 
+   /* @MessageMapping("/user.addUser")
+    @SendTo("/user/public")
+    public UserEntity addUser (
+            @Payload UserEntity userEntity
+    ) {
+        userService.saveUser(userEntity);
+        return userEntity;
+    }*/
+
+  /*  @MessageMapping("/user.disconnectedUser")
+    @SendTo("/user/public")
+    public UserEntity disconnect (
+            @Payload UserEntity userEntity
+    ) {
+        userService.disconnect(userEntity);
+        return userEntity;
+    }
+
+    @GetMapping("/users")
+    public ResponseEntity<List<UserEntity>> findConnectedUsers() {
+        return ResponseEntity.ok(userService.findConnectedUsers());
+    }*/
+
     @GetMapping("/user/me")
     public ResponseEntity<UserResponse> getInfoAboutUserById(
             @AuthenticationPrincipal UserDetails userDetails
             ) {
         Optional<UserEntity> foundUserEntity = userService.findByUsername(userDetails.getUsername());
 
+        log.severe("profile requested");
 
         if(foundUserEntity.isPresent()) {
             UserResponse userResponse = UserResponse.builder()
@@ -47,7 +74,7 @@ public class UserController {
 
     }
 
-    @GetMapping("/users")
+    @GetMapping("/users/all")
     public Integer listUsers() {
         List<UserEntity> users = userService.findAll();
       //  log.severe("LIST OF USERS ARE AVAILABLE");
