@@ -33,8 +33,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void saveUser(UserEntity userEntity) {
-        userEntity.setStatus(Status.ONLINE);
-        userRepository.save(userEntity);                    /// ?????
+        var storedUser = userRepository.findByEmail(userEntity.getEmail())
+                .orElse(null);
+        if (storedUser != null) {
+            storedUser.setStatus(Status.ONLINE);
+            userRepository.save(storedUser);
+        }
     }
 
     @Override

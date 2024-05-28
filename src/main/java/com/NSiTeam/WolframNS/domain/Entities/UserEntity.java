@@ -10,6 +10,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Data
@@ -43,7 +44,11 @@ public class UserEntity implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return role.getAuthorities();
+        if (role != null) {
+            return role.getAuthorities(); // Проверяем, что поле role не равно null перед вызовом метода getAuthorities()
+        } else {
+            return Collections.emptyList(); // Возвращаем пустую коллекцию, если role равно null
+        }
     }
     @Override
     public String getUsername() {

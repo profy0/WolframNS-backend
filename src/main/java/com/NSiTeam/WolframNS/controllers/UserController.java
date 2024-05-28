@@ -30,16 +30,17 @@ public class UserController {
     private UserService userService;
 
 
-   /* @MessageMapping("/user.addUser")
+    @MessageMapping("/user.addUser")
     @SendTo("/user/public")
     public UserEntity addUser (
             @Payload UserEntity userEntity
     ) {
         userService.saveUser(userEntity);
+        log.severe("SAVEDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
         return userEntity;
-    }*/
+    }
 
-  /*  @MessageMapping("/user.disconnectedUser")
+    @MessageMapping("/user.disconnectedUser")
     @SendTo("/user/public")
     public UserEntity disconnect (
             @Payload UserEntity userEntity
@@ -50,8 +51,9 @@ public class UserController {
 
     @GetMapping("/users")
     public ResponseEntity<List<UserEntity>> findConnectedUsers() {
+        log.severe("IT WAS CALLED");
         return ResponseEntity.ok(userService.findConnectedUsers());
-    }*/
+    }
 
     @GetMapping("/user/me")
     public ResponseEntity<UserResponse> getInfoAboutUserById(

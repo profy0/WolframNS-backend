@@ -39,7 +39,7 @@ public class ChatController {
         return chatMessage;
     }
 
- /*   private final SimpMessagingTemplate messagingTemplate;
+    private final SimpMessagingTemplate messagingTemplate;
     private final ChatMessageService chatMessageService;
 
     @MessageMapping("/chat")
@@ -64,5 +64,5 @@ public class ChatController {
             @PathVariable("recipientId") String recipientId
     ) {
         return ResponseEntity.ok(chatMessageService.findChatMessages(senderId, recipientId));
-    }*/
+    }
 }

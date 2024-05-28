@@ -1,8 +1,6 @@
 package com.NSiTeam.WolframNS.domain.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
@@ -14,6 +12,7 @@ import lombok.*;
 @Table(name = "privateChat")
 public class ChatRoom {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private String chatId;
     private String senderId;
